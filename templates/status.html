@@ -1,0 +1,26 @@
+<!doctype html>
+<title>Spectator</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<section class="content">
+  <div class="mx-2 p-2 align-self-center" id="process-container">
+  <h1>Process Monitor</h1>
+    {% for x in range(result|length) %}
+    Host : {{ result[x][x]['Hostname'] }}
+    {% for i in range(result[x]|length) %}
+    <div class="row-cols-auto mx-2 align-self-center row">
+      <div class="d-table-cell mx-2 px-2 cell">
+      {{ result[x][i]['Process Name'] }}
+        </div>
+      <div class="d-table-cell mx-2 px-2 cell">
+      {{ result[x][i]['status'] }}
+      </div>
+      <div class="d-table-cell mx-2 px-2 cell">
+      Threads : {{ result[x][i]['Thread Count'] }}
+      </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    </div>
+</section>

@@ -1,0 +1,15 @@
+.row{
+    clear: both;
+    width: 60%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.cell{
+    float: left;
+    min-height: 20px;
+    width: 140px;
+    /*border: 1px solid black;*/
+    text-align: left;
+    min-width: 100px;
+}
