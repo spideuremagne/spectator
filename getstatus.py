@@ -1,5 +1,6 @@
 import ssl
 import urllib
+from socket import timeout
 from urllib.error import URLError, HTTPError
 import json
 
@@ -22,6 +23,13 @@ def pollHostStatus(host):
         print('hit timeout!')
         print(e.__dict__)
         if isinstance(e.reason, ConnectionRefusedError):
+            url = 'http://' + host + '/announce/payload.json'
+            print(url)
+            get = urllib.request.Request(url)
+            data = urllib.request.urlopen(get, timeout=5)
+            payload = json.load(data)
+            return payload
+        elif isinstance(e.reason, timeout):
             url = 'http://' + host + '/announce/payload.json'
             print(url)
             get = urllib.request.Request(url)

@@ -27,11 +27,16 @@ def render_status():
 @app.route('/json')
 def render_json():
 
+    with open("hosts.yaml", 'r') as hostStream:
+        hosts_loaded = yaml.safe_load(hostStream)
 
-    status = getstatus.pollHostStatus()
-    status = json.dumps(status)
+        allstat = []
+        for target in hosts_loaded['hosts']:
+            status = getstatus.pollHostStatus(target)
+            allstat.append(status)
 
-    return status
+        allstat = json.dumps(allstat)
+        return allstat
 
 
 if __name__ == '__main__':

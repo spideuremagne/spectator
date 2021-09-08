@@ -7,7 +7,7 @@
   <div class="mx-2 p-2 align-self-center" id="process-container">
   <h1>Process Monitor</h1>
     {% for x in range(result|length) %}
-    Host : {{ result[x][x]['Hostname'] }}
+    Host : {{ result[x][0]['Hostname'] }}
     {% for i in range(result[x]|length) %}
     <div class="row-cols-auto mx-2 align-self-center row">
       <div class="d-table-cell mx-2 px-2 cell">
